@@ -1,12 +1,14 @@
 version: '3'
 
+networks:
+  backend:
+
 services:
   app:
     container_name: rest-user
     build: 
       context: .
       dockerfile: Dockerfile
-      target: base
     restart: always
     env_file: .env
     expose:
@@ -22,10 +24,10 @@ services:
       - mongo
     networks:
       - backend
-  db:
+  mongo:
     image: mongo
     restart: always
     ports:
-      - "27018:27017"
+      - "27019:27017"
     networks:
       - backend
