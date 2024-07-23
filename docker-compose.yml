@@ -5,7 +5,7 @@ networks:
 
 services:
   app:
-    container_name: rest-user
+    container_name: rest-transaction
     build: 
       context: .
       dockerfile: Dockerfile
