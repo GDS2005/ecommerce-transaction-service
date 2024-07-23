@@ -12,8 +12,8 @@ exports.createTransaction = async (req, res) => {
         const { seller, buyer, product, status, quantity } = value;
 
         // Check if transaction already exists for the buyer
-        let transaction = await Transaction.findOne({ buyer });
-        if (transaction) return res.status(400).json({ msg: 'Transaction already exists for this buyer' });
+        //let transaction = await Transaction.findOne({ buyer });
+        //if (transaction) return res.status(400).json({ msg: 'Transaction already exists for this buyer' });
 
         transaction = new Transaction({ seller, buyer, product, status, quantity });
 
