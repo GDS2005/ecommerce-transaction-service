@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const error = require('./middlewares/error');
 const fs = require('fs');
 const path = require('path');
+const morgan = require('morgan');
 
 // Load environment variables from a .env file into process.env
 dotenv.config();
@@ -15,6 +16,9 @@ const app = express();
 
 // Connect to the MongoDB database
 db();
+
+// Set up Morgan to log requests
+app.use(morgan('dev')); //Set up Morgan to log requests
 
 // Parse incoming JSON requests
 app.use(express.json());
