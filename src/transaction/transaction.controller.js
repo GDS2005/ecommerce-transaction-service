@@ -3,7 +3,6 @@ const transactionValidation = require('../transaction/transaction.validation');
 
 exports.createTransaction = async (req, res) => {
     try {
-        // Validate request body
         const { error, value } = transactionValidation.createTransaction.body.validate(req.body);
         if (error) {
             return res.status(400).json({ error: error.details[0].message });
@@ -51,7 +50,6 @@ exports.updateTransaction = async (req, res) => {
     const { id } = req.params;
 
     try {
-        // Validate request body
         const { error, value } = transactionValidation.updateTransaction.body.validate(req.body);
         if (error) {
             return res.status(400).json({ error: error.details[0].message });
@@ -62,7 +60,6 @@ exports.updateTransaction = async (req, res) => {
         let transaction = await Transaction.findById(id);
         if (!transaction) return res.status(404).json({ msg: 'Transaction not found' });
 
-        // Update transaction fields if provided
         if (seller) transaction.seller = seller;
         if (buyer) transaction.buyer = buyer;
         if (product) transaction.product = product;

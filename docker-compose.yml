@@ -16,7 +16,7 @@ services:
     ports:
       - ${PORT}:${PORT}
     environment: 
-      - MONGODB_URL=mongodb://mongo:27017/userdb
+      - MONGODB_URL=mongodb://mongo:27017transactiondb
       - CLIENT_URL=${CLIENT_URL}
     links: 
       - mongo  
