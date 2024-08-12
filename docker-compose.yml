@@ -5,7 +5,7 @@ networks:
 
 services:
   app:
-    container_name: rest-transaction
+    container_name: transaction-service
     build: 
       context: .
       dockerfile: Dockerfile
@@ -16,10 +16,8 @@ services:
     ports:
       - ${PORT}:${PORT}
     environment: 
-      - MONGODB_URL=mongodb://mongo:27017transactiondb
+      - MONGODB_URL=mongodb://mongo:27017/transactiondb
       - CLIENT_URL=${CLIENT_URL}
-    links: 
-      - mongo  
     depends_on:
       - mongo
     networks:
@@ -28,6 +26,6 @@ services:
     image: mongo
     restart: always
     ports:
-      - "27019:27017"
+      - "27020:27017"
     networks:
       - backend
